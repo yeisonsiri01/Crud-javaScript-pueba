@@ -1,0 +1,56 @@
+
+    <% include ../layouts/cabeza.ejs %> 
+    
+        <br/>
+        <br/>
+
+        <a href="/tarea/crear" class="btn btn-primary" type="submit">Crear nueva Tarea</a>
+        <br/>
+        <br/>
+
+        <table class="table table-light">
+            <thead class="thead-light">
+                
+                <tr>
+                    
+                    <th>id</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <% for( let itarea = 0; itarea < tarea.length; itarea++ ) { %>
+                    <tr>
+                        <td><%= tarea[itarea].id %> </td>
+                        <td><%= tarea[itarea].titulo %></td>
+                        <td><%= tarea[itarea].descripcion %></td>
+                        <td>
+                            
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="get" action="/tarea/editar/<%= tarea[itarea].id %>">
+                                    
+                                    <button class="btn btn-primary" type="submit">Editar</button>
+
+                                </form>
+                            </div>
+                            
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="post" action="/tarea/eliminar/<%= tarea[itarea].id %>">
+                                    
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+
+                                </form>
+                            </div>
+                            
+                            
+                           </td>
+                    </tr>
+    
+                <% } %>
+            </tbody>
+        </table>
+        
+        <% include ../layouts/pie.ejs %> 
+ 
